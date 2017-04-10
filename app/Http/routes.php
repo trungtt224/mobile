@@ -20,7 +20,10 @@ Route::get("/", [
 	'uses' => 'IndexController@index'
 ]);
 
-Route::get('brands','BrandController@index');
+Route::get('/admin/brands', [
+    'as' => 'admin.brands',
+    'uses' => 'BrandController@index'
+]);
 
 Route::get('catalog/{id}/products', [
 	'as' => 'products',
@@ -31,10 +34,13 @@ Route::get('catalog/{id}/products', [
 
 Route::get('/admin', 'admin\AdminController@index');
 
-Route::get('/admin/brands/brand','BrandController@create');
+Route::get('/admin/brands/brand',[
+    'as' => 'create.brand',
+    'uses' => 'BrandController@create'
+]);
 
 Route::post('/admin/brands/brand',[
-	'as' => 'createBrand',
+	'as' => 'store.brand',
 	'uses' => 'BrandController@store'
 ]);
 

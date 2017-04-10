@@ -7,12 +7,21 @@
     <body>
         <div class="container">
             <h1>Create New Brand</h1>
-            {!! Form::open(array('route' => 'createBrand', 'class' => 'form')) !!}
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            {!! Form::open(array('route' => 'store.brand', 'class' => 'form')) !!}
             <div class="form-group">
                 {!! Form::label('Brand Name') !!}
-                {!! Form::text('name', null, array('required', 'class' => 'form-control', 'placeholder' => "Brand name")) !!}
+                {!! Form::text('name', '', array('class' => 'form-control', 'placeholder' => "Brand name")) !!}
             </div>
-            {!! Form::submit('Submit', array('class' => 'btn btn-primary') ) !!}
+            {!! Form::submit('Create', array('class' => 'btn btn-primary') ) !!}
 
             {!! Form::close() !!}
         </div>

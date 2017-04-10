@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Brand;
 use App\Http\Requests\Request;
 
 class BrandFormRequest extends Request
@@ -24,7 +25,8 @@ class BrandFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:brand,name',
         ];
     }
+
 }
