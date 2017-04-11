@@ -20,10 +20,6 @@ Route::get("/", [
 	'uses' => 'IndexController@index'
 ]);
 
-Route::get('/admin/brands', [
-    'as' => 'admin.brands',
-    'uses' => 'BrandController@index'
-]);
 
 Route::get('catalog/{id}/products', [
 	'as' => 'products',
@@ -34,14 +30,42 @@ Route::get('catalog/{id}/products', [
 
 Route::get('/admin', 'admin\AdminController@index');
 
-Route::get('/admin/brands/brand',[
+/**
+ * admin brand
+ */
+
+Route::get('/admin/brands', [
+    'as' => 'admin.brands',
+    'uses' => 'BrandController@index'
+]);
+
+Route::get('/admin/brands/brand', [
     'as' => 'create.brand',
     'uses' => 'BrandController@create'
 ]);
 
-Route::post('/admin/brands/brand',[
+Route::post('/admin/brands/brand', [
 	'as' => 'store.brand',
 	'uses' => 'BrandController@store'
+]);
+
+/**
+ * admin catalog
+ */
+
+Route::get('/admin/catalogs', [
+    'as' => 'admin.catalogs',
+    'uses' => 'CatalogController@index'
+]);
+
+Route::get('/admin/catalogs/catalog', [
+    'as' => 'create.catalog',
+    'uses' => 'CatalogController@create'
+]);
+
+Route::post('/admin/catalogs/catalog', [
+    'as' => 'store.catalog',
+    'uses' => 'CatalogController@store'
 ]);
 
 // Load Image

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class BrandFormRequest extends Request
+class CatalogFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,16 @@ class BrandFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:brand,name',
+            'name' => 'required|unique:catalog|max:20'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Brand name is required',
-            'name.unique' => 'Brand: '. $this->request->get('name') . " is exist"
-
+            'name.required' => 'Catalog name is required',
+            'name.unique' => 'Catalog: '. $this->request->get('name') . " is exist",
+            'name.max' => 'Name must be length from 1 to 20 characters'
         ];
     }
-
 }
